@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      sign_in @user                                     #sign_in is located in sessions_helper
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
